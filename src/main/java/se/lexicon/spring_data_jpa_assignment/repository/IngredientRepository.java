@@ -8,9 +8,13 @@ import java.util.Collection;
 
 public interface IngredientRepository extends CrudRepository<Ingredient, Integer> {
 
+
+    @Query("select i from Ingredient i where i.ingredientName = ?1")
+    Collection<Ingredient> findByIngredientName(String ingredientName);
+
     @Query("select i from Ingredient i where i.ingredientName like %?1%")
     Collection<Ingredient> findIngredientByIngredientNameContaining (String ingredientName);
 
 
-    Collection<Ingredient> findByIngredientName(String ingredientName);
+
 }
