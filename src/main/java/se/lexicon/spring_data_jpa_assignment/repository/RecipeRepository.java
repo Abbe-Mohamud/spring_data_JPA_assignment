@@ -19,10 +19,13 @@ public interface RecipeRepository extends CrudRepository <Recipe, Integer> {
     Collection<Recipe> findRecipesByRecipeIngredients(List<RecipeIngredient> recipeIngredients);
 
     @Query("select r from Recipe r where r.categories = ?1")
+    Collection<Recipe> findRecipesByCategories(String category);
+
+    @Query("select r from Recipe r where r.categories = ?1")
     Collection<Recipe> findRecipesByCategories(List<RecipeCategory> categories);
 
 
-    Collection<Recipe> findAllByCategoriesAndRecipeName(List<RecipeCategory> categories,String recipeName)
+
 
 
 }
